@@ -4,10 +4,11 @@ Proyecto en Python para resolver un problema de **Traveling Salesman Problem (TS
 
 ## Estado actual
 
-- El núcleo de optimización está implementado en `src/or_tools.py`.
-- `main.py` está presente pero actualmente vacío.
-- Hay notebooks (`Conexión_API_GoogleMaps.ipynb`, `test.ipynb`) para exploración y pruebas.
-- Hay matrices de ejemplo en `matriz_distancias.csv` y `data/distancias_test.csv`.
+- **Núcleo de optimización**: implementado en `src/or_tools.py` con módulos refactorizados (`src/optimizer.py`, `src/data_loader.py`, `src/display.py`).
+- **Interfaz web**: `app.py` proporciona una aplicación **Streamlit** interactiva.
+- **CLI ejecutable**: `main.py` orquesta lectura de datos, solve y reporte desde terminal.
+- **Notebooks**: `Conexión_API_GoogleMaps.ipynb` y `test.ipynb` para exploración.
+- **Matrices de ejemplo**: `matriz_distancias.csv` (con unidades), `data/distancias_test.csv`, `data/distancias.csv`; también `data/nodos.txt` y `data/tiempos.csv`.
 
 ## Objetivo
 
@@ -21,20 +22,30 @@ Encontrar un ciclo Hamiltoniano de costo mínimo que:
 
 ```text
 webmining/
-├─ main.py
+├─ main.py                       # CLI: orquesta lectura, solve y reporte
+├─ app.py                        # Streamlit: interfaz web interactiva para el optimizer
 ├─ src/
-│  └─ or_tools.py                # Modelo TSP (variables, restricciones, objetivo, solve)
+│  ├─ or_tools.py               # Modelo TSP original (variables, restricciones, objetivo)
+│  ├─ optimizer.py              # Lógica de optimización refactorizada
+│  ├─ data_loader.py            # Carga y preprocesamiento de matrices de distancias
+│  └─ display.py                # Componentes de visualización y reporte
 ├─ docs/
 │  └─ diagrams/
-│     ├─ tsp_flow.py             # Genera diagrama con Python Diagrams (usa Graphviz)
-│     └─ tsp_flow.dot            # Fuente DOT de Graphviz
+│     ├─ tsp_flow.py            # Genera diagrama con Python Diagrams (usa Graphviz)
+│     └─ tsp_flow.dot           # Fuente DOT de Graphviz
 ├─ data/
-│  └─ distancias_test.csv        # Matriz de distancias numérica de ejemplo
-├─ matriz_distancias.csv         # Matriz de distancias con unidades de texto ("km", "m")
+│  ├─ distancias.csv            # Matriz de distancias (formato principal)
+│  ├─ distancias_test.csv       # Matriz numérica de ejemplo
+│  ├─ nodos.txt                 # Definición de nodos
+│  └─ tiempos.csv               # Matriz de costos/tiempos
+├─ matriz_distancias.csv        # Matriz alternativa con unidades de texto ("km", "m")
 ├─ Conexión_API_GoogleMaps.ipynb # Obtención/experimentación con distancias
-├─ test.ipynb                    # Pruebas exploratorias
+├─ test.ipynb                   # Pruebas exploratorias
+├─ Makefile                     # Targets para generación de diagramas
 ├─ requirements.txt
-└─ pyproject.toml
+├─ pyproject.toml
+├─ uv.lock                      # Dependencias bloqueadas para reproducibilidad
+└─ .python-version              # Python 3.12+
 ```
 
 ## Diagramas (Diagrams + Graphviz)
@@ -187,11 +198,29 @@ El solver espera una matriz cuadrada de costos consistente con los índices:
 - `data/distancias_test.csv`: matriz numérica lista para probar.
 - `matriz_distancias.csv`: matriz con unidades de texto (`"4.1 km"`, `"1 m"`), útil como fuente cruda para preprocesar.
 
+## Ejecución
+
+### Interfaz web (Streamlit)
+
+```bash
+uv run streamlit run app.py
+```
+
+La aplicación abrirá en `http://localhost:8501` con UI interactiva para carga de datos, ejecución del optimizer y visualización.
+
+### CLI (Terminal)
+
+```bash
+uv run python main.py
+```
+
+Orquesta automáticamente: lectura de datos, ejecución del solver y generación de reporte.
+
 ## Limitaciones y próximos pasos
 
 - `case="vrp"` en `load_constraints` está declarado pero no implementado.
-- Falta un script ejecutable en `main.py` para orquestar lectura, solve y reporte.
 - Sería útil agregar:
 	- validación y normalización automática de matrices con unidades,
-	- reconstrucción explícita del tour ordenado,
-	- tests unitarios para restricciones y extracción de solución.
+	- reconstrucción y visualización explícita del tour ordenado,
+	- tests unitarios completos para restricciones y extracción de solución,
+	- documentación de API pública para integración en third-party apps.
