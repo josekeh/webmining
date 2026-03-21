@@ -8,7 +8,7 @@ Proyecto en Python para resolver un problema de **Traveling Salesman Problem (TS
 - **Interfaz web**: `app.py` proporciona una aplicación **Streamlit** interactiva.
 - **CLI ejecutable**: `main.py` orquesta lectura de datos, solve y reporte desde terminal.
 - **Notebooks**: `Conexión_API_GoogleMaps.ipynb` y `test.ipynb` para exploración.
-- **Matrices de ejemplo**: `matriz_distancias.csv` (con unidades), `data/distancias_test.csv`, `data/distancias.csv`; también `data/nodos.txt` y `data/tiempos.csv`.
+- **Matrices de ejemplo**: `matriz_distancias.csv` (con unidades), `data/distancias.csv`; también `data/nodos.txt` y `data/tiempos.csv`.
 
 ## Objetivo
 
@@ -35,7 +35,6 @@ webmining/
 │     └─ tsp_flow.dot           # Fuente DOT de Graphviz
 ├─ data/
 │  ├─ distancias.csv            # Matriz de distancias (formato principal)
-│  ├─ distancias_test.csv       # Matriz numérica de ejemplo
 │  ├─ nodos.txt                 # Definición de nodos
 │  └─ tiempos.csv               # Matriz de costos/tiempos
 ├─ matriz_distancias.csv        # Matriz alternativa con unidades de texto ("km", "m")
@@ -170,7 +169,7 @@ import pandas as pd
 from src.or_tools import calcular_ruta_optima
 
 # Para el solver conviene usar la versión numérica (sin sufijos "km"/"m")
-dist = pd.read_csv("data/distancias_test.csv", index_col=0)
+dist = pd.read_csv("data/distancias.csv", index_col=0)
 
 status, modelo, x_ij, nodos, costos = calcular_ruta_optima(dist, dist.values)
 
@@ -195,7 +194,7 @@ El solver espera una matriz cuadrada de costos consistente con los índices:
 
 ### Archivos incluidos
 
-- `data/distancias_test.csv`: matriz numérica lista para probar.
+- `data/distancias.csv`: matriz numérica lista para probar.
 - `matriz_distancias.csv`: matriz con unidades de texto (`"4.1 km"`, `"1 m"`), útil como fuente cruda para preprocesar.
 
 ## Ejecución
