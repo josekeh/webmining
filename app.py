@@ -169,52 +169,7 @@ if "best_route" in st.session_state:
     st.subheader("🗺️ Mapa del recorrido")
 
     center_lat = nodes["lat"].mean()
-    center_lon = nodes["lon"].mean()
-    fmap = folium.Map(location=[center_lat, center_lon], zoom_start=14, tiles="CartoDB positron")
 
-    # Marcadores
-    for step, node_id in enumerate(best_route):
-        lat = nodes.loc[node_id, "lat"]
-        lon = nodes.loc[node_id, "lon"]
-        tipo = nodes.loc[node_id, "tipo"]
-        nombre = nodes.loc[node_id, "nombre"]
-        color = TYPE_COLORS.get(tipo, "gray")
-
-        if tipo == "depot":
-            icon = folium.Icon(color=color, icon="home", prefix="fa")
-        else:
-            icon = folium.Icon(color=color, icon="info-sign")
-
-        folium.Marker(
-            location=[lat, lon],
-            popup=f"<b>{step}. {nombre}</b><br>Tipo: {tipo}<br>Puntaje: {nodes.loc[node_id, 'puntaje']}",
-            tooltip=f"{step}. {nombre}",
-            icon=icon,
-        ).add_to(fmap)
-
-    # Líneas del recorrido
-    route_coords = [[nodes.loc[nid, "lat"], nodes.loc[nid, "lon"]] for nid in best_route]
-    folium.PolyLine(
-        locations=route_coords,
-        color="#3388ff",
-        weight=4,
-        opacity=0.8,
-        dash_array="10",
-    ).add_to(fmap)
-
-    # Números de tramo en puntos medios
-    for i in range(len(best_route) - 1):
-        orig = best_route[i]
-        dest = best_route[i + 1]
-        mid_lat = (nodes.loc[orig, "lat"] + nodes.loc[dest, "lat"]) / 2
-        mid_lon = (nodes.loc[orig, "lon"] + nodes.loc[dest, "lon"]) / 2
-        folium.Marker(
-            location=[mid_lat, mid_lon],
-            icon=folium.DivIcon(
-                html=f'<div style="font-size:12px;color:#3388ff;font-weight:bold;">{i+1}</div>',
-                icon_size=(20, 20),
-            ),
-        ).add_to(fmap)
 
     st_folium(fmap, use_container_width=True, height=500, returned_objects=[])
 
