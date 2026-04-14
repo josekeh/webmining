@@ -4,18 +4,18 @@ digraph TSPFlow {
   node [shape=box, style="rounded,filled", fillcolor="#F8FAFC", color="#334155", fontname="Helvetica"];
   edge [color="#475569", fontname="Helvetica"];
 
-  input [label="CSV de distancias"];
-  load [label="Carga con pandas"];
-  index [label="Índices de nodos"];
-  vars [label="Variables binarias x_ij"];
-  constraints [label="Restricciones TSP + MTZ"];
-  objective [label="Objetivo: minimizar costo"];
-  solve [label="Resolver con OR-Tools"];
-  status [shape=diamond, label="¿Solución factible?"];
-  extract [label="Extraer arcos x_ij = 1"];
-  review [label="Revisar datos/modelo"];
+  input [label="Dataset depot (nodos + matrices)"];
+  load [label="Carga con data_loader.py"];
+  choose [label="Elegir criterio y orden de tipos"];
+  combos [label="Generar combinaciones de nodos"];
+  schedule [label="Validar horarios y estadias"];
+  score [label="Evaluar costo/puntaje"];
+  select [label="Seleccionar mejor ruta"];
+  status [shape=diamond, label="¿Ruta factible encontrada?"];
+  extract [label="Mostrar mapa, tablas y exportes"];
+  review [label="Ajustar parametros / reintentar"];
 
-  input -> load -> index -> vars -> constraints -> objective -> solve -> status;
+  input -> load -> choose -> combos -> schedule -> score -> select -> status;
   status -> extract [label="Sí"];
   status -> review [label="No"];
 }

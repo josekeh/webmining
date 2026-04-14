@@ -34,18 +34,18 @@ def build_tsp_flow_diagram() -> None:
         node_attr=node_attr,
         edge_attr=edge_attr,
     ):
-        input_csv = Blank("CSV de distancias")
-        load = Blank("Carga con pandas")
-        index_nodes = Blank("Índices de nodos")
-        vars_xij = Blank("Variables binarias x_ij")
-        constraints = Blank("Restricciones TSP + MTZ")
-        objective = Blank("Objetivo: minimizar costo")
-        solve = Blank("Resolver con OR-Tools")
-        status = Blank("¿Solución factible?")
-        extract = Blank("Extraer arcos x_ij = 1")
-        review = Blank("Revisar datos/modelo")
+        input_data = Blank("Dataset depot (nodos + matrices)")
+        load = Blank("Carga con data_loader.py")
+        choose = Blank("Elegir criterio y orden de tipos")
+        combos = Blank("Generar combinaciones de nodos")
+        schedule = Blank("Validar horarios y estadias")
+        score = Blank("Evaluar costo/puntaje")
+        select = Blank("Seleccionar mejor ruta")
+        status = Blank("¿Ruta factible encontrada?")
+        extract = Blank("Mostrar mapa, tablas y exportes")
+        review = Blank("Ajustar parametros / reintentar")
 
-        input_csv >> load >> index_nodes >> vars_xij >> constraints >> objective >> solve >> status
+        input_data >> load >> choose >> combos >> schedule >> score >> select >> status
         status >> extract
         status >> review
 
