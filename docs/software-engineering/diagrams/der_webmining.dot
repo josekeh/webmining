@@ -1,0 +1,23 @@
+digraph DER_Webmining {
+  rankdir=LR;
+  bgcolor="#F7FAFF";
+  fontname="Helvetica";
+  node [shape=record, style="rounded,filled", fontname="Helvetica", fontsize=10, color="#36597C", penwidth=1.2];
+  edge [fontname="Helvetica", fontsize=9, color="#4E6584", arrowsize=0.8];
+
+  depot [fillcolor="#DDEEFF", label="{Depot|+ id_depot : int\l+ nombre : string\l+ zona : string\l}"];
+  nodo [fillcolor="#D8F4FF", label="{NodoTuristico|+ id_nodo : int\l+ id_depot : int\l+ nombre : string\l+ tipo : string\l+ puntaje : float\l+ lat : float\l+ lon : float\l+ apertura_min : int\l+ cierre_min : int\l}"];
+  dist [fillcolor="#E2FCE2", label="{MatrizDistancias|+ id_depot : int\l+ origen_id : int\l+ destino_id : int\l+ distancia_m : float\l}"];
+  tiempo [fillcolor="#EAFCEB", label="{MatrizTiempos|+ id_depot : int\l+ origen_id : int\l+ destino_id : int\l+ tiempo_s : float\l}"];
+  cfg [fillcolor="#FFF0C9", label="{ConfiguracionRuta|+ id_cfg : int\l+ id_depot : int\l+ criterio : enum\l+ hora_salida_min : int\l+ orden_tipos : list\l+ estadias_min : list\l}"];
+  res [fillcolor="#FFDCCF", label="{ResultadoRuta|+ id_resultado : int\l+ id_cfg : int\l+ valor_objetivo : float\l+ puntaje_total : float\l+ distancia_total_km : float\l+ tiempo_total_min : float\l}"];
+  tramo [fillcolor="#FFE6DB", label="{TramoRuta|+ id_tramo : int\l+ id_resultado : int\l+ paso : int\l+ origen_id : int\l+ destino_id : int\l+ distancia_km : float\l+ tiempo_min : float\l+ llegada : string\l+ salida : string\l}"];
+
+  depot -> nodo [label="1:N"];
+  depot -> dist [label="1:N"];
+  depot -> tiempo [label="1:N"];
+  depot -> cfg [label="1:N"];
+  cfg -> res [label="1:N"];
+  res -> tramo [label="1:N"];
+  nodo -> tramo [label="origen/destino"];
+}

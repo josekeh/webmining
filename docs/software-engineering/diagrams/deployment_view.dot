@@ -1,0 +1,22 @@
+digraph Deployment {
+  rankdir=LR;
+  bgcolor="#F8FBFF";
+  fontname="Helvetica";
+  node [style="rounded,filled", fontname="Helvetica", fontsize=10, color="#36597B", penwidth=1.2];
+  edge [fontname="Helvetica", fontsize=9, color="#4F6786", arrowsize=0.75];
+
+  user [shape=box, fillcolor="#D7EDFF", label="Usuario\nDesktop/Web/Mobile"];
+  runtime [shape=box3d, fillcolor="#A7D7FF", label="Runtime Flet\nPython 3.12+"];
+  app [shape=component, fillcolor="#B8E5FF", label="app.py"];
+  modules [shape=component, fillcolor="#C8F0DF", label="src/*\noptimizer, data_loader"];
+  datasets [shape=cylinder, fillcolor="#E9EEFF", label="data/depot*/\nmatrices + nodos"];
+  exports [shape=folder, fillcolor="#D6F6D0", label="exports/"];
+  docs [shape=folder, fillcolor="#E6D9FF", label="docs/software-engineering"];
+
+  user -> runtime;
+  runtime -> app;
+  app -> modules;
+  modules -> datasets;
+  app -> exports;
+  app -> docs [style=dashed, label="referencia"];
+}

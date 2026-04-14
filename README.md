@@ -17,6 +17,14 @@ La app ofrece:
 - La salida por consola heredada esta en `main.py` + `src/display.py`.
 - Los diagramas estan en `docs/diagrams/`.
 
+## Documentacion de ingenieria completa
+
+Se agrego un paquete integral de documentacion del proceso de ingenieria de software en:
+
+- `docs/software-engineering/README.md`
+
+Incluye DFD nivel 0 a 2, arquitectura, DER, flujos, operacion y presentacion ejecutiva.
+
 ## Interfaz grafica (Flet)
 
 La aplicacion incluye una UI moderna para:

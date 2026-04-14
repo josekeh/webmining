@@ -1,0 +1,51 @@
+digraph UMLClassDomain {
+  graph [
+    rankdir=LR,
+    bgcolor="#f7fbff",
+    fontname="Helvetica",
+    fontsize=12,
+    pad="0.35",
+    nodesep="0.5",
+    ranksep="0.85"
+  ];
+
+  node [shape=record, style="filled", color="#355a7c", penwidth=1.2, fontname="Helvetica", fontsize=10];
+  edge [color="#4f6886", penwidth=1.1, fontname="Helvetica", fontsize=10];
+
+  depot [
+    label="{Depot|+id: int\l+nombre: str\l+lat: float\l+lng: float\l}",
+    fillcolor="#dceeff"
+  ];
+
+  nodo [
+    label="{NodoTuristico|+id: int\l+nombre: str\l+tipo: str\l+puntaje: float\l+apertura_min: int\l+cierre_min: int\l}",
+    fillcolor="#cbe8ff"
+  ];
+
+  config [
+    label="{ConfiguracionRuta|+criterio: str\l+orden_tipos: list[str]\l+estadia_por_tipo: dict\l+hora_salida: str\l}",
+    fillcolor="#ffe0a8"
+  ];
+
+  resultado [
+    label="{ResultadoRuta|+distancia_total_km: float\l+tiempo_total_min: float\l+puntaje_total: float\l+ruta_ids: list[int]\l}",
+    fillcolor="#ffd5b8"
+  ];
+
+  tramo [
+    label="{TramoRuta|+origen_id: int\l+destino_id: int\l+distancia_km: float\l+tiempo_min: float\l}",
+    fillcolor="#fff0b8"
+  ];
+
+  matrices [
+    label="{MatricesViaje|+distancias: DataFrame\l+tiempos: DataFrame\l}",
+    fillcolor="#d8f2d3"
+  ];
+
+  depot -> nodo [label="1..* contiene"];
+  config -> resultado [label="1 genera 0..1"];
+  resultado -> tramo [label="1..* agrega"];
+  nodo -> matrices [label="* referencia"];
+  depot -> matrices [label="1 usa"];
+  config -> nodo [label="filtra/ordena"];
+}

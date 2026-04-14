@@ -1,0 +1,43 @@
+digraph UMLUseCase {
+  graph [
+    rankdir=LR,
+    bgcolor="#f7fbff",
+    fontname="Helvetica",
+    fontsize=12,
+    pad="0.35",
+    nodesep="0.5",
+    ranksep="0.8"
+  ];
+
+  node [fontname="Helvetica", fontsize=11, color="#355a7c", penwidth=1.2];
+  edge [fontname="Helvetica", fontsize=10, color="#4f6886", penwidth=1.1];
+
+  usuario [label="Usuario Operador", shape=box, style="rounded,filled", fillcolor="#dceeff"];
+  google [label="Google APIs\n(Places + Distance Matrix)", shape=box, style="rounded,filled", fillcolor="#ffe0b2"];
+
+  subgraph cluster_system {
+    label="Sistema Webmining";
+    style="rounded,filled";
+    color="#9ab5cf";
+    fillcolor="#eef5fd";
+
+    uc1 [label="CU-01\nConfigurar recorrido", shape=ellipse, style="filled", fillcolor="#cbe8ff"];
+    uc2 [label="CU-02\nOptimizar recorrido", shape=ellipse, style="filled", fillcolor="#bfe2ff"];
+    uc3 [label="CU-03\nAnalizar detalle por tramo", shape=ellipse, style="filled", fillcolor="#ffe0a8"];
+    uc4 [label="CU-04\nExportar reportes CSV/PDF", shape=ellipse, style="filled", fillcolor="#ffd5b8"];
+    uc5 [label="CU-05\nAjustar parametros y\nreoptimizar", shape=ellipse, style="filled", fillcolor="#fff0b8"];
+    uc6 [label="CU-06\nActualizar dataset Google", shape=ellipse, style="filled", fillcolor="#d8f2d3"];
+  }
+
+  usuario -> uc1;
+  usuario -> uc2;
+  usuario -> uc3;
+  usuario -> uc4;
+  usuario -> uc5;
+  usuario -> uc6;
+
+  google -> uc6 [label="provee datos"];
+  uc5 -> uc2 [label="<<include>>"];
+  uc2 -> uc3 [label="<<include>>"];
+  uc2 -> uc4 [label="<<extend>>"];
+}

@@ -1,0 +1,20 @@
+digraph ArchContext {
+  rankdir=LR;
+  bgcolor="#F3F7FF";
+  splines=true;
+  fontname="Helvetica";
+  node [fontname="Helvetica", style="rounded,filled", color="#365A7C", penwidth=1.4];
+  edge [fontname="Helvetica", color="#4B6281", arrowsize=0.8];
+
+  user [shape=box, fillcolor="#D9EEFF", label="Usuario"];
+  webmining [shape=box, fillcolor="#8FD3FF", color="#1A76A2", label="Sistema Webmining"];
+  google_places [shape=box, fillcolor="#FFE5B8", label="Google Places API"];
+  google_matrix [shape=box, fillcolor="#FFDDB0", label="Google Distance Matrix API"];
+  data_repo [shape=folder, fillcolor="#E9EDFF", label="Repositorio de datos\npor depot"];
+
+  user -> webmining [label="configura y consulta"];
+  google_places -> data_repo [label="POIs"];
+  google_matrix -> data_repo [label="distancias/tiempos"];
+  data_repo -> webmining [label="datasets operativos"];
+  webmining -> user [label="ruta + reportes"];
+}

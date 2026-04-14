@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Webmining | 01-Vision-y-Alcance.md</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111c34;
+      --card: rgba(12, 30, 64, 0.72);
+      --card-border: rgba(127, 178, 255, 0.25);
+      --title: #e0ecff;
+      --text: #d4deef;
+      --muted: #9ab0d2;
+      --link: #7dd3fc;
+      --link-hover: #a5f3fc;
+      --accent: #fb7185;
+      --shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 12%, #24427a 0%, transparent 32%),
+        radial-gradient(circle at 84% 18%, #5a2f5b 0%, transparent 26%),
+        radial-gradient(circle at 55% 82%, #113749 0%, transparent 32%),
+        linear-gradient(130deg, var(--bg) 0%, var(--bg-soft) 100%);
+      min-height: 100vh;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      min-height: 100vh;
+      backdrop-filter: blur(2px);
+    }
+
+    aside {
+      border-right: 1px solid var(--card-border);
+      background: rgba(2, 7, 20, 0.52);
+      padding: 24px 18px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: 0.2px;
+      color: var(--title);
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    nav a {
+      display: block;
+      color: var(--text);
+      text-decoration: none;
+      padding: 10px 12px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      margin: 3px 0;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    nav a:hover {
+      border-color: var(--card-border);
+      background: rgba(25, 51, 95, 0.5);
+      transform: translateX(3px);
+      color: var(--link-hover);
+    }
+
+    .downloads {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--card-border);
+      font-size: 0.92rem;
+    }
+
+    .downloads h3 {
+      margin: 0 0 8px 0;
+      color: var(--title);
+      font-size: 0.96rem;
+    }
+
+    .downloads a {
+      color: var(--link);
+      text-decoration: none;
+      display: block;
+      margin: 4px 0;
+    }
+
+    main {
+      padding: 28px;
+    }
+
+    article {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 34px 38px;
+      animation: reveal 500ms ease;
+    }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1, h2, h3 { color: var(--title); }
+    h1 { font-size: 2rem; margin-top: 0; }
+    h2 { margin-top: 2rem; border-left: 4px solid var(--accent); padding-left: 10px; }
+    p, li { line-height: 1.62; }
+
+    a { color: var(--link); }
+    a:hover { color: var(--link-hover); }
+
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      margin: 10px 0;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    code {
+      background: rgba(17, 36, 76, 0.82);
+      border: 1px solid rgba(151, 197, 255, 0.3);
+      color: #eaf4ff;
+      border-radius: 6px;
+      padding: 2px 6px;
+    }
+
+    pre code {
+      display: block;
+      padding: 12px;
+      overflow-x: auto;
+    }
+
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { position: static; height: auto; }
+      main { padding: 16px; }
+      article { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <div class="brand">Webmining Docs Hub</div>
+      <div class="subtitle">Ingenieria de software, arquitectura y datos Google</div>
+      <nav><a href="index.html">Inicio</a>
+<a href="01-Vision-y-Alcance.html">01-Vision-y-Alcance</a>
+<a href="02-Requerimientos-y-Casos-de-Uso.html">02-Requerimientos-y-Casos-de-Uso</a>
+<a href="03-Arquitectura.html">03-Arquitectura</a>
+<a href="04-DFD-Nivel-0-a-2.html">04-DFD-Nivel-0-a-2</a>
+<a href="05-Modelo-de-Datos-y-DER.html">05-Modelo-de-Datos-y-DER</a>
+<a href="06-Flujos-y-Procesos.html">06-Flujos-y-Procesos</a>
+<a href="07-Calidad-Seguridad-y-Operacion.html">07-Calidad-Seguridad-y-Operacion</a>
+<a href="08-Plan-de-Evolucion.html">08-Plan-de-Evolucion</a>
+<a href="09-Presentacion-20min.html">09-Presentacion-20min</a>
+<a href="10-UML-y-Casos-de-Uso.html">10-UML-y-Casos-de-Uso</a></nav>
+      <section class="downloads">
+        <h3>Presentaciones</h3>
+        <a href="Webmining_Arquitectura_y_Datos_Google_20min.pptx">Version ejecutiva</a>
+        <a href="Webmining_Presentacion_Docente_20min.pptx">Version docente</a>
+        <a href="Webmining_Presentacion_Tribunal_Tecnico_20min.pptx">Version tribunal tecnico</a>
+      </section>
+    </aside>
+    <main>
+      <article><h1 id="01-vision-y-alcance">01 - Vision y Alcance</h1>
+<h2 id="vision-del-producto">Vision del producto</h2>
+<p>Webmining es una plataforma de planificacion de recorridos turisticos que combina datos geograficos, reglas de negocio y optimizacion para proponer itinerarios de alta calidad.</p>
+<h2 id="problema-que-resuelve">Problema que resuelve</h2>
+<ul>
+<li>Seleccionar lugares de interes por tipo.</li>
+<li>Encontrar rutas eficientes segun distancia, tiempo o puntaje.</li>
+<li>Respetar restricciones horarias reales (apertura/cierre).</li>
+<li>Mostrar resultados de manera visual y exportable.</li>
+</ul>
+<h2 id="objetivos-de-negocio">Objetivos de negocio</h2>
+<ul>
+<li>Mejorar experiencia de planificacion de recorridos.</li>
+<li>Reducir tiempo de armado manual de itinerarios.</li>
+<li>Aumentar calidad del recorrido usando criterios cuantitativos.</li>
+</ul>
+<h2 id="alcance-funcional">Alcance funcional</h2>
+<p>Incluye:</p>
+<ul>
+<li>Carga de datasets por depot.</li>
+<li>Seleccion de criterio y orden de actividades.</li>
+<li>Validacion de ventanas temporales.</li>
+<li>Visualizacion en mapa.</li>
+<li>Exportacion CSV y PDF.</li>
+</ul>
+<p>Fuera de alcance actual:</p>
+<ul>
+<li>Multiusuario con autenticacion.</li>
+<li>Persistencia en base de datos transaccional.</li>
+<li>API publica para integraciones externas.</li>
+<li>Optimizacion distribuida o en cloud.</li>
+</ul>
+<h2 id="stakeholders">Stakeholders</h2>
+<ul>
+<li>Usuario final: turista/planificador.</li>
+<li>Equipo tecnico: desarrollo y datos.</li>
+<li>Equipo academico/gestion: validacion de resultados.</li>
+</ul>
+<h2 id="kpis-sugeridos">KPIs sugeridos</h2>
+<ul>
+<li>Tiempo medio de respuesta de optimizacion.</li>
+<li>Porcentaje de rutas factibles.</li>
+<li>Distancia promedio por recorrido.</li>
+<li>Tiempo promedio de estadia efectivo.</li>
+<li>Numero de exportes por sesion.</li>
+</ul></article>
+    </main>
+  </div>
+</body>
+</html>

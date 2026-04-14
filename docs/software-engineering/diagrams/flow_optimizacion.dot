@@ -1,0 +1,23 @@
+digraph FlowOpt {
+  rankdir=LR;
+  bgcolor="#F8FCFF";
+  splines=true;
+  fontname="Helvetica";
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10, color="#3C5D80", penwidth=1.2];
+  edge [color="#4F6886", penwidth=1.1, arrowsize=0.75, fontname="Helvetica", fontsize=9];
+
+  a [fillcolor="#CBE8FF", label="Seleccion de\ndepot y criterio"];
+  b [fillcolor="#BFE2FF", label="Definir orden de\ntipos y estadias"];
+  c [fillcolor="#FFE0A8", label="Cargar dataset\npor depot"];
+  d [fillcolor="#FFD5B8", label="Generar rutas\ncandidatas"];
+  e [shape=diamond, fillcolor="#FFF0B8", label="Factible\npor horario?"];
+  f [fillcolor="#CBEFD4", label="Evaluar costo/\npuntaje"];
+  g [fillcolor="#AEE6C1", label="Seleccionar mejor\nruta"];
+  h [fillcolor="#D8D0FF", label="Render mapa\ny tablas"];
+  i [fillcolor="#C7BBFF", label="Exportar CSV/PDF"];
+
+  a -> b -> c -> d -> e;
+  e -> f [label="Si"];
+  e -> d [label="No, siguiente", color="#B85C5C"];
+  f -> g -> h -> i;
+}

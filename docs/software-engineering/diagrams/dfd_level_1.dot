@@ -1,0 +1,25 @@
+digraph DFD_Level_1 {
+  rankdir=LR;
+  bgcolor="#F8FBFF";
+  splines=true;
+  fontname="Helvetica";
+  graph [pad="0.3", nodesep="0.5", ranksep="0.75"];
+  node [fontname="Helvetica", fontsize=10, style="rounded,filled", color="#355C7D", penwidth=1.4];
+  edge [fontname="Helvetica", fontsize=9, color="#4E6380", penwidth=1.1, arrowsize=0.8];
+
+  user [shape=box, fillcolor="#D7F0FF", label="Usuario"];
+  p1 [shape=box, fillcolor="#9AD9FF", label="P1\nGestion de configuracion"];
+  p2 [shape=box, fillcolor="#93E1D8", label="P2\nCarga y validacion de datos"];
+  p3 [shape=box, fillcolor="#FFCF86", label="P3\nOptimizacion de recorrido"];
+  p4 [shape=box, fillcolor="#C7B8FF", label="P4\nVisualizacion y exportes"];
+  d1 [shape=cylinder, fillcolor="#EAF0FF", label="D1\nData depot"];
+  d2 [shape=cylinder, fillcolor="#EAF0FF", label="D2\nResultado optimizacion"];
+
+  user -> p1 [label="Parametros"];
+  p1 -> p2 [label="depot + reglas"];
+  d1 -> p2 [label="nodos + matrices"];
+  p2 -> p3 [label="datos validados"];
+  p3 -> d2 [label="ruta + schedule"];
+  d2 -> p4 [label="resultado"];
+  p4 -> user [label="mapa, tablas, CSV/PDF"];
+}

@@ -1,0 +1,23 @@
+digraph ArchContainers {
+  rankdir=LR;
+  bgcolor="#F9FBFF";
+  splines=ortho;
+  fontname="Helvetica";
+  node [fontname="Helvetica", style="rounded,filled", color="#3C5E80", penwidth=1.3];
+  edge [fontname="Helvetica", color="#506987", arrowsize=0.75];
+
+  ui [shape=component, fillcolor="#9AD6FF", label="UI Layer\napp.py (Flet)"];
+  domain [shape=component, fillcolor="#FFE09E", label="Domain Layer\nsrc/optimizer.py"];
+  data [shape=component, fillcolor="#AEE6D4", label="Data Layer\nsrc/data_loader.py"];
+  legacy [shape=component, fillcolor="#DDD2FF", label="Legacy Console\nmain.py + display.py"];
+  files [shape=cylinder, fillcolor="#E9EEFF", label="CSV/TXT datasets"];
+  exports [shape=folder, fillcolor="#D7F5D1", label="exports/ CSV + PDF"];
+
+  ui -> domain [label="request optimize"];
+  ui -> data [label="load depot"];
+  data -> files [label="read"];
+  domain -> ui [label="best route + schedule"];
+  ui -> exports [label="write reports"];
+  legacy -> domain [label="optional run"];
+  legacy -> data [label="optional load"];
+}

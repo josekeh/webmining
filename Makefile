@@ -1,4 +1,4 @@
-.PHONY: check-env diagrams diagram-dot diagram-diagrams clean-diagrams
+.PHONY: check-env diagrams diagram-dot diagram-diagrams clean-diagrams software-docs-diagrams software-docs-ppt software-docs-site software-docs
 
 UV ?= uv
 
@@ -21,3 +21,14 @@ diagram-diagrams:
 
 clean-diagrams:
 	rm -f docs/diagrams/tsp_flow.png docs/diagrams/tsp_flow.svg docs/diagrams/tsp_flow_diagrams.png
+
+software-docs-diagrams: check-env
+	bash docs/software-engineering/generate_diagrams.sh
+
+software-docs-ppt:
+	$(UV) run --with python-pptx --with Pillow python docs/software-engineering/generate_presentation.py
+
+software-docs-site:
+	$(UV) run --with markdown python docs/software-engineering/generate_docs_site.py
+
+software-docs: software-docs-diagrams software-docs-ppt software-docs-site

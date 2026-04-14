@@ -1,0 +1,24 @@
+digraph FlowGoogleData {
+  rankdir=LR;
+  bgcolor="#F7FBFF";
+  splines=true;
+  fontname="Helvetica";
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10, color="#355A7C", penwidth=1.25];
+  edge [fontname="Helvetica", fontsize=9, color="#4F6886", penwidth=1.1, arrowsize=0.75];
+
+  p0 [fillcolor="#DCEEFF", label="Definir zona objetivo\ny categorias"];
+  p1 [fillcolor="#FFE0B2", label="Consultar\nGoogle Places API"];
+  p2 [fillcolor="#FFD2A0", label="Normalizar POIs\n(nombre, tipo, coordenadas)"];
+  p3 [fillcolor="#FFF1BE", label="Deduplicar y validar\ncalidad de nodos"];
+  p4 [fillcolor="#FFD9B8", label="Consultar Google\nDistance Matrix API"];
+  p5 [fillcolor="#D8F2D3", label="Construir matrices\ndistancias/tiempos"];
+  p6 [fillcolor="#CBE9FF", label="Persistir dataset\npor depot"];
+  p7 [fillcolor="#D4D0FF", label="Publicar dataset\npara optimizacion"];
+
+  quota [shape=diamond, fillcolor="#FFE2E2", color="#A45454", label="Cuota/errores\nAPI?"];
+
+  p0 -> p1 -> p2 -> p3 -> p4 -> quota;
+  quota -> p4 [label="retry/backoff", color="#A45454"];
+  quota -> p5 [label="OK"];
+  p5 -> p6 -> p7;
+}

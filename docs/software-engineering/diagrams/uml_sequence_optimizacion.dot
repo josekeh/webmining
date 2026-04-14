@@ -1,0 +1,31 @@
+digraph UMLSequenceOpt {
+  graph [
+    rankdir=LR,
+    bgcolor="#f7fbff",
+    fontname="Helvetica",
+    fontsize=12,
+    pad="0.35",
+    nodesep="0.6",
+    ranksep="0.9"
+  ];
+
+  node [shape=box, style="rounded,filled", color="#355a7c", penwidth=1.2, fontname="Helvetica", fontsize=10, fillcolor="#dceeff"];
+  edge [color="#4f6886", penwidth=1.1, fontname="Helvetica", fontsize=9];
+
+  usuario [label="Usuario"];
+  ui [label="Flet UI\n(app.py)", fillcolor="#cbe8ff"];
+  loader [label="data_loader.py", fillcolor="#ffe0a8"];
+  optimizer [label="optimizer.py", fillcolor="#ffd5b8"];
+  scheduler [label="Validador\nventanas horarias", fillcolor="#fff0b8"];
+  reportes [label="Exportes CSV/PDF", fillcolor="#d8f2d3"];
+
+  usuario -> ui [label="1) Configura parametros"];
+  ui -> loader [label="2) Solicita dataset"];
+  loader -> ui [label="3) Devuelve nodos + matrices"];
+  ui -> optimizer [label="4) Ejecuta optimizacion"];
+  optimizer -> scheduler [label="5) Valida factibilidad"];
+  scheduler -> optimizer [label="6) Factible/No factible"];
+  optimizer -> ui [label="7) Mejor ruta + metricas"];
+  ui -> reportes [label="8) Genera CSV/PDF"];
+  reportes -> usuario [label="9) Entrega resultado"];
+}

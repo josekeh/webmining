@@ -1,0 +1,21 @@
+digraph DFD_Level_0 {
+  rankdir=LR;
+  bgcolor="#F3F7FF";
+  splines=true;
+  fontname="Helvetica";
+  graph [pad="0.35", nodesep="0.55", ranksep="0.8"];
+  node [fontname="Helvetica", fontsize=11, style="rounded,filled", color="#38598B", penwidth=1.5];
+  edge [fontname="Helvetica", fontsize=10, color="#4C5D7A", penwidth=1.2, arrowsize=0.8];
+
+  user [shape=box, fillcolor="#D8F3FF", label="Usuario Operador"];
+  google [shape=box, fillcolor="#FFE4B8", label="Google APIs\nPlaces + Distance Matrix"];
+  data [shape=cylinder, fillcolor="#E8ECFF", label="Dataset Local\n(nodos, distancias, tiempos)"];
+  system [shape=ellipse, fillcolor="#7AD3FF", color="#1F7AA7", fontsize=12, label="Webmining\nOptimizador de Recorridos"];
+  outputs [shape=box, fillcolor="#CFF4D9", label="Mapa + Tablas +\nExportes CSV/PDF"];
+
+  user -> system [label="Configura criterio, orden y horarios"];
+  google -> data [label="Datos crudos y enriquecidos"];
+  data -> system [label="Matrices y nodos por depot"];
+  system -> outputs [label="Ruta optima y metricas"];
+  outputs -> user [label="Decision y analisis"];
+}

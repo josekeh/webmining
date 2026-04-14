@@ -1,0 +1,45 @@
+digraph ArchComponents {
+  rankdir=TB;
+  bgcolor="#F7FAFF";
+  splines=true;
+  fontname="Helvetica";
+  node [fontname="Helvetica", style="rounded,filled", color="#3B5F81", penwidth=1.2];
+  edge [fontname="Helvetica", color="#4F6785", arrowsize=0.75];
+
+  subgraph cluster_ui {
+    label="app.py (UI)";
+    color="#7FADE0";
+    style="rounded";
+    cfg [fillcolor="#B8DEFF", label="Input Controller"];
+    val [fillcolor="#CDE9FF", label="Validators"];
+    render [fillcolor="#A9D4FF", label="Map + Tables Renderer"];
+    export [fillcolor="#9ED0FF", label="CSV/PDF Exporter"];
+  }
+
+  subgraph cluster_opt {
+    label="src/optimizer.py";
+    color="#E3B86E";
+    style="rounded";
+    combos [fillcolor="#FFE1AB", label="Combination Generator"];
+    sched [fillcolor="#FFD7BF", label="Schedule Evaluator"];
+    score [fillcolor="#FFE8C9", label="Cost/Score Evaluator"];
+    pick [fillcolor="#FCD894", label="Best Route Selector"];
+  }
+
+  subgraph cluster_data {
+    label="src/data_loader.py";
+    color="#7FC6B5";
+    style="rounded";
+    parse [fillcolor="#C2F0E5", label="Node Parser"];
+    matrix [fillcolor="#B4E8DA", label="Matrix Loader"];
+    groups [fillcolor="#A6DECE", label="Type Grouping"];
+  }
+
+  cfg -> val -> combos;
+  parse -> combos;
+  matrix -> combos;
+  combos -> sched -> score -> pick;
+  pick -> render;
+  pick -> export;
+  groups -> combos;
+}

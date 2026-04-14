@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Webmining | README.md</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111c34;
+      --card: rgba(12, 30, 64, 0.72);
+      --card-border: rgba(127, 178, 255, 0.25);
+      --title: #e0ecff;
+      --text: #d4deef;
+      --muted: #9ab0d2;
+      --link: #7dd3fc;
+      --link-hover: #a5f3fc;
+      --accent: #fb7185;
+      --shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 12%, #24427a 0%, transparent 32%),
+        radial-gradient(circle at 84% 18%, #5a2f5b 0%, transparent 26%),
+        radial-gradient(circle at 55% 82%, #113749 0%, transparent 32%),
+        linear-gradient(130deg, var(--bg) 0%, var(--bg-soft) 100%);
+      min-height: 100vh;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      min-height: 100vh;
+      backdrop-filter: blur(2px);
+    }
+
+    aside {
+      border-right: 1px solid var(--card-border);
+      background: rgba(2, 7, 20, 0.52);
+      padding: 24px 18px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: 0.2px;
+      color: var(--title);
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    nav a {
+      display: block;
+      color: var(--text);
+      text-decoration: none;
+      padding: 10px 12px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      margin: 3px 0;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    nav a:hover {
+      border-color: var(--card-border);
+      background: rgba(25, 51, 95, 0.5);
+      transform: translateX(3px);
+      color: var(--link-hover);
+    }
+
+    .downloads {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--card-border);
+      font-size: 0.92rem;
+    }
+
+    .downloads h3 {
+      margin: 0 0 8px 0;
+      color: var(--title);
+      font-size: 0.96rem;
+    }
+
+    .downloads a {
+      color: var(--link);
+      text-decoration: none;
+      display: block;
+      margin: 4px 0;
+    }
+
+    main {
+      padding: 28px;
+    }
+
+    article {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 34px 38px;
+      animation: reveal 500ms ease;
+    }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1, h2, h3 { color: var(--title); }
+    h1 { font-size: 2rem; margin-top: 0; }
+    h2 { margin-top: 2rem; border-left: 4px solid var(--accent); padding-left: 10px; }
+    p, li { line-height: 1.62; }
+
+    a { color: var(--link); }
+    a:hover { color: var(--link-hover); }
+
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      margin: 10px 0;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    code {
+      background: rgba(17, 36, 76, 0.82);
+      border: 1px solid rgba(151, 197, 255, 0.3);
+      color: #eaf4ff;
+      border-radius: 6px;
+      padding: 2px 6px;
+    }
+
+    pre code {
+      display: block;
+      padding: 12px;
+      overflow-x: auto;
+    }
+
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { position: static; height: auto; }
+      main { padding: 16px; }
+      article { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <div class="brand">Webmining Docs Hub</div>
+      <div class="subtitle">Ingenieria de software, arquitectura y datos Google</div>
+      <nav><a href="index.html">Inicio</a>
+<a href="01-Vision-y-Alcance.html">01-Vision-y-Alcance</a>
+<a href="02-Requerimientos-y-Casos-de-Uso.html">02-Requerimientos-y-Casos-de-Uso</a>
+<a href="03-Arquitectura.html">03-Arquitectura</a>
+<a href="04-DFD-Nivel-0-a-2.html">04-DFD-Nivel-0-a-2</a>
+<a href="05-Modelo-de-Datos-y-DER.html">05-Modelo-de-Datos-y-DER</a>
+<a href="06-Flujos-y-Procesos.html">06-Flujos-y-Procesos</a>
+<a href="07-Calidad-Seguridad-y-Operacion.html">07-Calidad-Seguridad-y-Operacion</a>
+<a href="08-Plan-de-Evolucion.html">08-Plan-de-Evolucion</a>
+<a href="09-Presentacion-20min.html">09-Presentacion-20min</a>
+<a href="10-UML-y-Casos-de-Uso.html">10-UML-y-Casos-de-Uso</a></nav>
+      <section class="downloads">
+        <h3>Presentaciones</h3>
+        <a href="Webmining_Arquitectura_y_Datos_Google_20min.pptx">Version ejecutiva</a>
+        <a href="Webmining_Presentacion_Docente_20min.pptx">Version docente</a>
+        <a href="Webmining_Presentacion_Tribunal_Tecnico_20min.pptx">Version tribunal tecnico</a>
+      </section>
+    </aside>
+    <main>
+      <article><h1 id="webmining-documentacion-integral-de-ingenieria-de-software">Webmining - Documentacion Integral de Ingenieria de Software</h1>
+<p>Este paquete contiene la documentacion completa del proyecto con foco en arquitectura, analisis funcional, datos y operacion.</p>
+<h2 id="alcance">Alcance</h2>
+<ul>
+<li>DFD nivel 0, nivel 1 y nivel 2.</li>
+<li>Arquitectura del sistema (contexto, contenedores, componentes y despliegue).</li>
+<li>Diagramas de flujo funcional y tecnico.</li>
+<li>UML: casos de uso, clases de dominio y secuencia principal.</li>
+<li>DER (modelo entidad-relacion) del dominio de datos.</li>
+<li>Pipeline de obtencion de datos con Google Maps.</li>
+<li>Presentacion ejecutiva de 20 minutos.</li>
+</ul>
+<h2 id="estructura">Estructura</h2>
+<ul>
+<li><a href="01-Vision-y-Alcance.html">01-Vision-y-Alcance.md</a></li>
+<li><a href="02-Requerimientos-y-Casos-de-Uso.html">02-Requerimientos-y-Casos-de-Uso.md</a></li>
+<li><a href="03-Arquitectura.html">03-Arquitectura.md</a></li>
+<li><a href="04-DFD-Nivel-0-a-2.html">04-DFD-Nivel-0-a-2.md</a></li>
+<li><a href="05-Modelo-de-Datos-y-DER.html">05-Modelo-de-Datos-y-DER.md</a></li>
+<li><a href="06-Flujos-y-Procesos.html">06-Flujos-y-Procesos.md</a></li>
+<li><a href="07-Calidad-Seguridad-y-Operacion.html">07-Calidad-Seguridad-y-Operacion.md</a></li>
+<li><a href="08-Plan-de-Evolucion.html">08-Plan-de-Evolucion.md</a></li>
+<li><a href="09-Presentacion-20min.html">09-Presentacion-20min.md</a></li>
+<li><a href="10-UML-y-Casos-de-Uso.html">10-UML-y-Casos-de-Uso.md</a></li>
+</ul>
+<h2 id="diagramas-incluidos">Diagramas incluidos</h2>
+<p>Carpeta: <a href="diagrams">diagrams</a></p>
+<ul>
+<li>DFD: nivel 0, nivel 1, nivel 2.</li>
+<li>Arquitectura: contexto, contenedores, componentes, despliegue.</li>
+<li>Datos: DER.</li>
+<li>Procesos: flujo de optimizacion, flujo de obtencion de datos Google.</li>
+<li>UML: casos de uso, clases de dominio, secuencia de optimizacion.</li>
+<li>Diagrama visual de plataforma con Python Diagrams.</li>
+</ul>
+<h2 id="generacion-de-artefactos">Generacion de artefactos</h2>
+<p>Desde la raiz del proyecto:</p>
+<ol>
+<li>Generar todos los diagramas modernos y a color:</li>
+</ol>
+<p>make software-docs-diagrams</p>
+<ol>
+<li>Generar presentaciones PowerPoint (ejecutiva, docente y tribunal tecnico):</li>
+</ol>
+<p>uv run python docs/software-engineering/generate_presentation.py</p>
+<ol>
+<li>Generar sitio HTML navegable:</li>
+</ol>
+<p>make software-docs-site</p>
+<ol>
+<li>Generar todo junto:</li>
+</ol>
+<p>make software-docs</p>
+<h2 id="artefactos-finales-esperados">Artefactos finales esperados</h2>
+<ul>
+<li>Imagenes SVG/PNG en <a href="diagrams">docs/software-engineering/diagrams</a>.</li>
+<li>Presentaciones en:</li>
+<li><a href="Webmining_Arquitectura_y_Datos_Google_20min.pptx">docs/software-engineering/Webmining_Arquitectura_y_Datos_Google_20min.pptx</a></li>
+<li><a href="Webmining_Presentacion_Docente_20min.pptx">docs/software-engineering/Webmining_Presentacion_Docente_20min.pptx</a></li>
+<li><a href="Webmining_Presentacion_Tribunal_Tecnico_20min.pptx">docs/software-engineering/Webmining_Presentacion_Tribunal_Tecnico_20min.pptx</a></li>
+<li>Sitio HTML en <a href="index.html">docs/software-engineering/site/index.html</a>.</li>
+</ul>
+<h2 id="audiencia-objetivo">Audiencia objetivo</h2>
+<ul>
+<li>Equipo tecnico (desarrollo, datos, arquitectura).</li>
+<li>Stakeholders de negocio.</li>
+<li>Docentes/evaluadores del proceso de ingenieria de software.</li>
+</ul></article>
+    </main>
+  </div>
+</body>
+</html>
